@@ -1,0 +1,52 @@
+" idea 三个插件
+"语法高亮
+syntax on
+
+"显示行号
+set number relativenumberat this makes the
+"显示光标所在位置的行号和列号f the window.
+set ruler
+
+set wrap                      "自动折行
+set shiftwidth=4
+
+set tabstop=4
+set softtabstop=4
+
+
+set expandtab                  "将tab替换为相应数量空格
+set smartindent
+set backspace=2
+
+set co=5
+"设置取消备份 禁止临时文件生成
+
+set nobackup
+set noswapfile
+
+
+" 为IdeaVim插件增加自动切换为英文输入法的功能,
+
+"jk退出insert模式
+inoremap jk <ESC>
+"  快速到行首
+noremap H 0
+"  快速到行尾
+noremap L $
+inoremap <C-h> <Left>
+inoremap <C-j> <Down>
+inoremap <C-k> <Up>
+inoremap <C-l> <Right>
+inoremap <C-a> <Home>
+inoremap <C-e> <End>
+
+let mapleader = '\<space>'
+"Idea action 配置
+" 重命令元素
+nnoremap <Leader>re :action RenameElement<CR>
+nnoremap <Leader>gi :action GotoImplementation<CR>
+nnoremap <Leader>im :action ImplementMethods<CR>
+nnoremap <Leader>rv :action IntroduceVariable<CR>
+nnoremap <Leader>cr :action CopyReference<CR>
+nnoremap <Leader>em :action ExtractMethod<CR>
+nnoremap <Leader>sw :action SurroundWith<CR>

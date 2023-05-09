@@ -1,0 +1,174 @@
+"定义转义符
+let mapleader = "`" 
+
+ "显示行号 
+set number 
+
+"高亮搜索的关键字 
+set hlsearch 
+ 
+"搜索忽略大小写 
+set ignorecase 
+
+
+" 随着键入即时搜索  
+set incsearch 
+
+
+" 有一个或以上大写字母时仍大小写敏感  
+set smartcase 
+
+" 定义快捷键到行首和行尾
+
+nnoremap <Leader>v <C-Q>
+
+ 
+
+" 定义快捷键保存当前窗口内容
+
+nnoremap <Leader>w :w<CR>
+
+
+inoremap <Leader>w<ESC>:w<CR>
+
+nnoremap <Leader>q :q<CR>
+
+inoremap jk <ESC>
+inoremap <C-l> <right>
+inoremap <C-h> <left>
+inoremap <C-j> <down>
+
+nnoremap <Leader>s zz
+
+vnoremap <Leader>s zz
+
+inoremap <Leader>s<ESC>zz<Insert><Right>
+
+ 
+
+set vsvim_useeditordefaults
+
+"backspace有几种工作方式，默认是vi兼容的。对新手来说很不习惯。对老vi 不那么熟悉的人也都挺困扰的。可以用
+"set backspace=indent,eol,start来解决。
+" indent: 如果用了:set indent,:set ai 等自动缩进，想用退格键将字段缩进的删掉，必须设置这个选项。否则不响应。
+"eol:如果插入模式下在行开头，想通过退格键合并两行，需要设置eol。start：要想删除此次插入前的输入，需设置这个。
+set backspace=indent,eol,start
+
+nnoremap <C-O> :vsc View.NavigateBackward<CR>
+
+nnoremap <C-I> :vsc View.NavigateForward<CR>
+
+"nnoremap <C-]> :vsc Edit.GoToDefinition<CR>
+
+ 
+
+nnoremap <C-]> :vsc VAssistX.GotoImplementation<CR>
+
+inoremap <C-]> :vsc VAssistX.GotoImplementation<CR>
+
+ 
+
+nnoremap <Leader>t :vsc VAssistX.GotoImplementation<CR>
+
+inoremap <Leader>t :vsc VAssistX.GotoImplementation<CR>
+
+ 
+
+ 
+
+nnoremap <Leader>t :vsc VAssistX.GotoImplementation<CR>
+
+inoremap <Leader>t :vsc VAssistX.GotoImplementation<CR>
+
+ 
+
+ 
+
+map<Space> 5j
+
+"map<S-Space> 5k
+
+map<S-Enter> -
+
+map H ^
+map L $
+
+ 
+
+nnoremap<Leader>y yiw
+
+nnoremap<Leader>p diw<ESC>"0P
+
+ 
+
+set so=3
+
+set hi
+
+set hls
+
+ 
+
+nnoremap<Leader>xh :noh<CR>
+
+ 
+
+nnoremap <Leader>vb :vsc Build.BuildOnlyProject<CR>
+
+"调试运行F5
+nnoremap <Leader>mb :vsc Debug.Start<CR>
+
+"编译CTRL+F7
+nnoremap <Leader>ma :vsc Build.Compile<CR>
+
+"编译运行CTRL+F5
+nnoremap <Leader>mr :vsc Debug.StartWithoutDebugging<CR>  
+
+ 
+
+nnoremap <Leader>vf :vsc Edit.FindinFiles<CR>
+
+nnoremap <Leader>vr :vsc Edit.ReplaceinFiles<CR>
+
+ 
+
+nnoremap <Leader>vp :vsc File.OpenContainingFolder<CR>
+
+ 
+
+nnoremap <Leader>vws :vsc Window.NewVerticalTabGroup<CR>
+
+nnoremap <Leader>vwh :vsc  Window.NewHorizontalTabGroup<CR>
+
+ 
+
+nnoremap <Leader>l :vsc VAssistX.ListMethodsInCurrentFile<CR>
+
+nnoremap <Leader>o :vsc VAssistX.OpenFileInSolutionDialog<CR>
+
+ 
+
+inoremap <Leader>l <ESC>:vsc VAssistX.ListMethodsInCurrentFile<CR>
+
+inoremap <Leader>o <ESC>:vsc VAssistX.OpenFileInSolutionDialog<CR>
+
+ 
+"头文件切换
+nnoremap <Leader>a :vsc VAssistX.OpenCorrespondingFile<CR>
+
+inoremap <Leader>a :vsc VAssistX.OpenCorrespondingFile<CR>
+
+" 1. 注释
+    :vnoremap ci :s/^/\/\/<cr>
+    :vnoremap cu :s/\/\//<cr>
+    :nnoremap ci :s/^/\/\/<cr>
+    :nnoremap cu :s/\/\//<cr>
+ 
+
+" 使用 va 查找符号
+
+nnoremap <Leader>vs :vsc VAssistX.FindSymbolDialog<CR>
+
+" ve 查找所有引用位置
+
+nnoremap <Leader>ve :vsc VAssistX.FindReferences<CR>
