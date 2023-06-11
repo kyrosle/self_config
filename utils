@@ -1,0 +1,19 @@
+rust:
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+mermaid in docker/podman:
+docker run --publish 8000:8080 ghcr.io/mermaid-js/mermaid-live-editor
+
+in .config/nushell/nu.config
+alias ra = joshuto 
+alias gdb = gdb -q
+
+.gdbinit:
+add-auto-load-safe-path /home/kyros/WorkStation/CPP/apexstorm/.gdbinit
+
+zoxide
+zoxide init nushell | save -f ~/.zoxide.nu
+in .config/nushell/nu.config end: source ~/.zoxide.nu
+
+cargo install ripgrep
+dnf install fd-find
