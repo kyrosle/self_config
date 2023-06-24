@@ -19,3 +19,5 @@ cargo install ripgrep
 dnf install fd-find
 
 kcachegrind
+
+sudo dnf install lsd bat bpytop lolcat
