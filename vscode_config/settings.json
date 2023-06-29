@@ -1,0 +1,688 @@
+{
+  "workbench.colorCustomizations": {
+    "statusBar.background": "#1A1A1A",
+    "statusBar.noFolderBackground": "#212121",
+    "statusBar.debuggingBackground": "#263238",
+    "editorSuggestWidget.selectedBackground": "#454242",
+    "editorSuggestWidget.border": "#b48989",
+    "editor.hoverHighlightBackground": "#2b1f1f",
+    "editor.selectionBackground": "#174869",
+    "editorInlayHint.parameterBackground": "#202c30",
+    "editorInlayHint.foreground": "#0a7da0",
+    "editorInlayHint.typeBackground": "#202c30",
+    "editorInlayHint.typeForeground": "#0a7da0",
+    "editorHoverWidget.border": "#b48989",
+    "editorHoverWidget.background": "#161515",
+    "editorStickyScroll.background": "#21343b",
+    "editorLineNumber.foreground": "#365e3a",
+    "peekView.border": "#b48989",
+    "peekViewEditorStickyScroll.background": "#21343b",
+    "peekViewTitle.background": "#3d2e2e",
+    "editorCursor.foreground": "#fff89bd7",
+    "icon.foreground": "#2cc4df",
+    "activityBar.activeBackground": "#161515",
+    "tab.activeBackground": "#21343b",
+    "menu.border": "#b48989"
+  },
+  "editor.tokenColorCustomizations": {
+    "comments": {
+      "foreground": "#8CC7B5"
+    }
+  },
+  "typescript.suggest.paths": false,
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "editor.formatOnType": true,
+  "C_Cpp.errorSquiggles": "disabled",
+  "C_Cpp.intelliSenseEngineFallback": "disabled",
+  "C_Cpp.intelliSenseEngine": "disabled",
+  "C_Cpp.autocomplete": "disabled",
+  "clangd.fallbackFlags": [
+    "-std=c++11"
+  ],
+  // Clangd 运行参数(在终端/命令行输入 clangd --help-list-hidden 可查看更多)
+  "clangd.path": "",
+  "clangd.arguments": [
+    // 让 Clangd 生成更详细的日志
+    "--log=verbose",
+    // 输出的 JSON 文件更美观
+    "--pretty",
+    // 全局补全(输入时弹出的建议将会提供 CMakeLists.txt 里配置的所有文件中可能的符号，会自动补充头文件)
+    "--all-scopes-completion",
+    // 建议风格：打包(重载函数只会给出一个建议）
+    // 相反可以设置为detailed
+    "--completion-style=bundled",
+    // 跨文件重命名变量
+    "--cross-file-rename",
+    // 允许补充头文件
+    "--header-insertion=iwyu",
+    // 输入建议中，已包含头文件的项与还未包含头文件的项会以圆点加以区分
+    "--header-insertion-decorators",
+    // 在后台自动分析文件(基于 complie_commands，我们用CMake生成)
+    "--background-index",
+    // 启用 Clang-Tidy 以提供「静态检查」
+    "--clang-tidy",
+    // Clang-Tidy 静态检查的参数，指出按照哪些规则进行静态检查，详情见「与按照官方文档配置好的 VSCode 相比拥有的优势」
+    // 参数后部分的*表示通配符
+    // 在参数前加入-，如-modernize-use-trailing-return-type，将会禁用某一规则
+    "--clang-tidy-checks=cppcoreguidelines-*,performance-*,bugprone-*,portability-*,modernize-*,google-*",
+    // 默认格式化风格: 谷歌开源项目代码指南
+    "--fallback-style=file",
+    // 同时开启的任务数量
+    "-j=4",
+    // pch优化的位置(memory 或 disk，选择memory会增加内存开销，但会提升性能) 推荐在板子上使用disk
+    "--pch-storage=memory",
+    // 启用这项时，补全函数时，将会给参数提供占位符，键入后按 Tab 可以切换到下一占位符，乃至函数末
+    // 我选择禁用
+    "--function-arg-placeholders=false",
+    // compelie_commands.json 文件的目录位置(相对于工作区，由于 CMake 生成的该文件默认在 build 文件夹中，故设置为 build)
+    "--compile-commands-dir=build"
+  ],
+  "crates.localCargoIndexBranch": "origin/master",
+  "rust-analyzer.procMacro.enable": true,
+  // "rust-analyzer.checkOnSave.allTargets": false,
+  // "rust-analyzer.checkOnSave.extraArgs": [
+  //   "--target",
+  //   "riscv64gc-unknown-none-elf"
+  // ],
+  "rust-analyzer.checkOnSave.command": "clippy",
+  "rust-analyzer.checkOnSave.features": "all",
+  "rust-analyzer.diagnostics.disabled": [
+    "macro-error"
+  ],
+  "editor.bracketPairColorization.enabled": true,
+  "editor.guides.bracketPairs": "active",
+  // "emmet.includeLanguages": {
+  //   "rust": "html"
+  // },
+  // "emmet.showExpandedAbbreviation": "never",
+  "emmet.triggerExpansionOnTab": true,
+  /// vim settings
+  "editor.lineNumbers": "relative",
+  // 绑定vim前导键
+  "vim.leader": "<space>",
+  // 启用easymotion插件
+  "vim.easymotion": true,
+  // 启用系统粘贴板作为vim寄存器
+  "vim.useSystemClipboard": true,
+  // 由vim接管ctrl+any的按键，而不是vscode
+  "vim.useCtrlKeys": true,
+  // 突出显示与当前搜索匹配的所有文本
+  "vim.hlsearch": true,
+  // 命令模式下的非递归按键绑定
+  "vim.commandLineModeKeyBindingsNonRecursive": [],
+  // 可视模式下的非递归按键绑定
+  "vim.operatorPendingModeKeyBindings": [],
+  // 下面定义的按键将交由vscode进行处理，而不是vscode-vim插件
+  "vim.handleKeys": {
+    //   "<C-a>": true,
+    "<C-f>": false,
+    //   "<C-n>": false,
+    //   "<C-s>": false,
+    "<C-k>": true,
+    "<C-h>": true,
+    "<C-j>": true,
+    "<C-l>": true,
+    //   "<C-`>": false
+  },
+  // 插入模式下的非递归按键绑定
+  "vim.insertModeKeyBindings": [
+    {
+      "before": [
+        "j",
+        "k"
+      ],
+      "after": [
+        "<Esc>"
+      ]
+    },
+    {
+      "before": [
+        "<C-l>"
+      ],
+      "after": [
+        "<right>"
+      ]
+    },
+    {
+      "before": [
+        "<C-h>"
+      ],
+      "after": [
+        "<left>"
+      ]
+    },
+    {
+      "before": [
+        "<C-j>"
+      ],
+      "after": [
+        "<down>"
+      ]
+    }
+  ],
+  // 普通模式下的非递归按键绑定
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      // Jump to change
+      "before": [
+        "[",
+        "c"
+      ],
+      "commands": [
+        "workbench.action.editor.previousChange"
+      ]
+    },
+    {
+      "before": [
+        "]",
+        "c"
+      ],
+      "commands": [
+        "workbench.action.editor.nextChange"
+      ]
+    },
+    // Code actions
+    {
+      "before": [
+        "<leader>",
+        "s",
+        "a"
+      ],
+      "commands": [
+        "editor.action.sourceAction"
+      ]
+    },
+    {
+      "before": [
+        "H"
+      ],
+      "after": [
+        "^"
+      ]
+    },
+    {
+      "before": [
+        "L"
+      ],
+      "after": [
+        "$"
+      ]
+    },
+    {
+      "before": [
+        "<tab>"
+      ],
+      "commands": [
+        "editor.toggleFold"
+      ]
+    },
+    // Quick fix
+    {
+      "before": [
+        "<leader>",
+        "q",
+        "f"
+      ],
+      "commands": [
+        "editor.action.quickFix"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "g",
+        "c"
+      ],
+      "commands": [
+        "workbench.action.showCommands"
+      ]
+    },
+    // 重用名变量
+    {
+      "before": [
+        "<leader>",
+        "r",
+        "n"
+      ],
+      "commands": [
+        "editor.action.rename"
+      ]
+    },
+    // Format 格式化当前文件
+    {
+      "before": [
+        "<leader>",
+        "f",
+        "m"
+      ],
+      "commands": [
+        "editor.action.formatDocument"
+      ]
+    },
+    // sidle the editor view
+    {
+      "before": [
+        "<c-u>"
+      ],
+      "after": [
+        "<c-y>"
+      ]
+    },
+    {
+      "before": [
+        "<c-d>"
+      ],
+      "after": [
+        "<c-e>"
+      ]
+    },
+    // go===================================================
+    // go to  References
+    {
+      "before": [
+        "g",
+        "r"
+      ],
+      "commands": [
+        "editor.action.goToReferences"
+      ]
+    },
+    // ===================================================
+    // new===================================================
+    // 新建文件夹,在编辑器的区域
+    {
+      "before": [
+        "<Leader>",
+        "n",
+        "d"
+      ],
+      "commands": [
+        "explorer.newFolder"
+      ]
+    },
+    // 新建文件,新建文件的位置取决于,文件资源管理器所在的位置
+    {
+      "before": [
+        "<Leader>",
+        "n",
+        "f"
+      ],
+      "commands": [
+        "explorer.newFile"
+      ]
+    },
+    // =====================================================
+    // open========================================================
+    // 打开文件资源管理器,光标会聚焦到文件资源管理器的窗口
+    {
+      "before": [
+        "<leader>",
+        "o",
+        "e"
+      ],
+      "commands": [
+        "workbench.view.explorer"
+      ]
+    },
+    // open search bar
+    {
+      "before": [
+        "<leader>",
+        "o",
+        "s"
+      ],
+      "commands": [
+        "workbench.action.quickOpen"
+      ]
+    },
+    // 进入到terminal
+    {
+      "before": [
+        "<leader>",
+        "o",
+        "t"
+      ],
+      "commands": [
+        "workbench.action.terminal.toggleTerminal"
+      ]
+    },
+    // 新建一个terminal终端
+    {
+      "before": [
+        "<leader>",
+        "o",
+        "T"
+      ],
+      "commands": [
+        "workbench.action.terminal.new"
+      ]
+    },
+    // 隐藏和打开terminal
+    {
+      "before": [
+        "<leader>",
+        "o",
+        "t"
+      ],
+      "commands": [
+        "workbench.action.togglePanel"
+      ]
+    },
+    // ================================================
+    // find char in all files(find in all files)
+    {
+      "before": [
+        "<leader>",
+        "f",
+        "a"
+      ],
+      "commands": [
+        "workbench.action.findInFiles"
+      ]
+    },
+    // ===============================================
+    // 移动==============================================================================
+    // 左右移动标签页------------------------------------------------
+    {
+      "before": [
+        "<leader>",
+        "h"
+      ],
+      "commands": [
+        "workbench.action.navigateLeft"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "l"
+      ],
+      "commands": [
+        "workbench.action.navigateRight"
+      ]
+    },
+    // 移动下一个编辑器标签
+    {
+      "before": [
+        "<c-l>"
+      ],
+      "commands": [
+        "workbench.action.nextEditor"
+      ]
+    },
+    // 移动到上一个编辑器标签
+    {
+      "before": [
+        "<c-h>"
+      ],
+      "commands": [
+        "workbench.action.previousEditor"
+      ]
+    },
+    // 最大化边编辑界面---------------------------------------------------------------
+    {
+      "before": [
+        "<space>",
+        "'"
+      ],
+      "commands": [
+        "workbench.action.maximizeEditor"
+      ]
+    },
+    // 保存当前文件---------------------------------------------------------------
+    {
+      "before": [
+        "<space>",
+        "s"
+      ],
+      "commands": [
+        "workbench.action.files.save"
+      ]
+    },
+    // 回到上一个导航位置----------------------------------------------------------
+    {
+      "before": [
+        "g",
+        "b"
+      ],
+      "commands": [
+        "workbench.action.navigateBack"
+      ],
+      "when": "canNavigateBack"
+    },
+    // workbench.action.closeActiveEditor
+    {
+      "before": [
+        "<space>",
+        "w",
+        "c"
+      ],
+      "commands": [
+        "workbench.action.closeActiveEditor"
+      ]
+    },
+    //workbench.action.closeAllEditors
+    {
+      "before": [
+        "<space>",
+        "w",
+        "a"
+      ],
+      "commands": [
+        "workbench.action.closeAllEditors"
+      ]
+    },
+    {
+      "before": [
+        "<space>",
+        "q",
+        "f"
+      ],
+      "commands": [
+        "editor.action.quickFix"
+      ]
+    }
+  ],
+  "vim.visualModeKeyBindingsNonRecursive": [
+    {
+      "before": [
+        "H"
+      ],
+      "after": [
+        "^"
+      ]
+    },
+    {
+      "before": [
+        "L"
+      ],
+      "after": [
+        "$"
+      ]
+    }
+  ],
+  "vim.digraphs": {},
+  "vim.commandLineModeKeyBindings": [],
+  "editor.wordWrap": "on",
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "backgroundCover.opacity": 0.3,
+  "workbench.startupEditor": "none",
+  "security.workspace.trust.untrustedFiles": "open",
+  "editor.unicodeHighlight.allowedLocales": {
+    "zh-hant": true
+  },
+  "explorer.confirmDragAndDrop": false,
+  "workbench.tree.indent": 20,
+  "workbench.tree.renderIndentGuides": "always",
+  "explorer.confirmDelete": false,
+  "editor.formatOnSaveMode": "modificationsIfAvailable",
+  "files.autoSave": "onFocusChange",
+  "git.allowForcePush": true,
+  "workbench.editorAssociations": {
+    "*.db": "default"
+  },
+  "terminal.integrated.gpuAcceleration": "on",
+  "terminal.integrated.lineHeight": 0,
+  "git.enableSmartCommit": true,
+  "crates.useLocalCargoIndex": false,
+  "screencastMode.fontSize": 20,
+  "backgroundCover.imagePath": "",
+  "editor.fontSize": 16,
+  "json.schemas": [],
+  "editor.codeLensFontFamily": "Hack HF",
+  "terminal.integrated.fontFamily": "Hack Nerd Font ",
+  "editor.fontFamily": "Hack Nerd Font ",
+  "rust-analyzer.cargo.buildScripts.enable": true,
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "editor.scrollBeyondLastLine": false,
+  "git.autofetch": true,
+  "git.confirmSync": false,
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "errorLens.enabledDiagnosticLevels": [
+    "error",
+    "warning"
+  ],
+  "crates.githubAuthBasic": "",
+  "window.menuBarVisibility": "compact",
+  "go.toolsManagement.checkForUpdates": "local",
+  "editor.linkedEditing": true,
+  "clangd.checkUpdates": true,
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[cpp]": {
+    "editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd"
+  },
+  "C_Cpp.clang_format_fallbackStyle": "{BasedOnStyle: Google, IndentWidth: 2, TabWidth: 2}",
+  "C_Cpp.clang_format_style": "{BasedOnStyle: Google, IndentWidth: 2, TabWidth: 2}",
+  "markdown-preview-github-styles.colorTheme": "system",
+  "go.toolsManagement.autoUpdate": true,
+  "go.goroot": "",
+  "go.gopath": "",
+  "outline-map.follow": "viewport",
+  "go.inferGopath": true,
+  "go.autocompleteUnimportedPackages": true,
+  "go.gocodePackageLookupMode": "go",
+  "go.gotoSymbol.includeImports": true,
+  "go.useCodeSnippetsOnFunctionSuggest": true,
+  "go.useCodeSnippetsOnFunctionSuggestWithoutType": true,
+  "go.docsTool": "gogetdoc",
+  "dart.flutterSdkPath": "D:\\flutter",
+  "[dart]": {
+    "editor.formatOnSave": true,
+    "editor.formatOnType": true,
+    "editor.rulers": [
+      80
+    ],
+    "editor.selectionHighlight": false,
+    "editor.suggest.snippetsPreventQuickSuggestions": false,
+    "editor.suggestSelection": "first",
+    "editor.tabCompletion": "onlySnippets",
+    "editor.wordBasedSuggestions": false
+  },
+  "dart.openDevTools": "flutter",
+  "redhat.telemetry.enabled": true,
+  "errorLens.fontSize": "14",
+  "errorLens.borderRadius": "5em 0px",
+  "errorLens.fontWeight": "500",
+  "rust-analyzer.inlayHints.closingBraceHints.minLines": 10,
+  "remote.SSH.remotePlatform": {
+    "120.79.130.158": "linux"
+  },
+  "debug.onTaskErrors": "showErrors",
+  "cmake.configureOnOpen": true,
+  "editor.stickyScroll.enabled": true,
+  "vim.camelCaseMotion.enable": true,
+  "vim.history": 100,
+  "vim.report": 10,
+  "scm.repositories.visible": 14,
+  "workbench.view.alwaysShowHeaderActions": true,
+  "workbench.editor.enablePreviewFromQuickOpen": true,
+  "grunt.autoDetect": "on",
+  "[proto3]": {
+    "editor.defaultFormatter": "zxh404.vscode-proto3"
+  },
+  "debug.terminal.clearBeforeReusing": true,
+  "terminal.integrated.profiles.windows": {
+    "Nu": {
+      "path": ""
+    }
+  },
+  "terminal.integrated.profiles.linux": {
+    "Nu": {
+      "path": ""
+    }
+  },
+  "terminal.integrated.defaultProfile.windows": "Nu",
+  "terminal.integrated.defaultProfile.linux": "Nu",
+  "editor.accessibilitySupport": "off",
+  "scm.countBadge": "focused",
+  "terminal.external.linuxExec": "",
+  "terminal.external.windowsExec": "",
+  "terminal.explorerKind": "external",
+  "window.titleBarStyle": "custom",
+  "git.openRepositoryInParentFolders": "never",
+  "C_Cpp.suggestSnippets": false,
+  "C_Cpp.clang_format_sortIncludes": true,
+  "html-css-class-completion.enableEmmetSupport": true,
+  "html-css-class-completion.includeGlobPattern": "**/*.{css,html}",
+  "editor.tabSize": 2,
+  "editor.detectIndentation": false,
+  "html.format.enable": false,
+  "terminal.integrated.enableMultiLinePasteWarning": false,
+  "[python]": {
+    "editor.formatOnType": true
+  },
+  "lldb.suppressUpdateNotifications": true,
+  "http.proxy": "",
+  "tabnine.experimentalAutoImports": true,
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "workbench.colorTheme": "poimandres-noitalics",
+  "[html]": {
+    "editor.defaultFormatter": "mohd-akram.vscode-html-format"
+  },
+  "terminal.integrated.detectLocale": "off",
+  "liveServer.settings.donotShowInfoMsg": true,
+  "errorLens.excludeBySource": [
+    "clang(drv_unknown_argument)"
+  ],
+  "[c]": {
+    "editor.defaultFormatter": "ms-vscode.cpptools"
+  },
+  "C_Cpp.autocompleteAddParentheses": true,
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "markdown-preview-enhanced.scrollSync": false,
+  "markdown-preview-enhanced.liveUpdate": false,
+  "http.proxySupport": "fallback",
+  "rust-analyzer.cargo.target": "x86_64-unknown-linux-gnu",
+  "C_Cpp.formatting": "clangFormat",
+  "editor.inlayHints.padding": true,
+  "markdown-preview-enhanced.printBackground": true,
+  "markdown-preview-enhanced.frontMatterRenderingOption": "table",
+  "liveServer.settings.proxy": {
+    "proxyUri": ""
+  },
+  "workbench.productIconTheme": "icons-carbon",
+  "workbench.iconTheme": "quill-icons-minimal",
+  "debug.console.fontFamily": "Hack Nerd Font ",
+  "scm.inputFontFamily": "Hack Nerd Font ",
+  "notebook.output.fontFamily": "Hack Nerd Font ",
+  "chat.editor.fontFamily": "Hack Nerd Font ",
+  "cSpell.userWords": [
+    "kyros"
+  ],
+  "editor.minimap.enabled": false,
+}
